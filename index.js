@@ -12,25 +12,29 @@ recognition.maxAlternatives = 1;
 
 const start = document.getElementById('start')
 const result = document.querySelector('.result')
-let isButtonPressed = false;
-let timeout
 
-start.addEventListener('mousedown', (event) => {
+
+start.addEventListener('mousedown', handleMdown)
+start.addEventListener('mouseup', handleMUp)
+
+
+function handleMUp() {
+    start.innerHTML = 'Start'
+    recognition.onresult = (event) => {
+        console.log(event.results[0][0].transcript);
+    };
+    recognition.stop()
+    console.log('mouseup');
+
+    console.log('mouseup');
+}
+
+function handleMdown(e) {
     start.innerHTML = 'voise message...'
     console.log(recognition.start())
     console.log("Ready to receive a color command.");
-    isButtonPressed = true
-    
-})
 
-start.addEventListener('mouseup', () => {
-    start.innerHTML = 'start'
-    isButtonPressed = false
-    clearTimeout(timeout)
 
-    recognition.onresult = (event) => {
-        console.log(event.results[0][0].transcript);
-        recognition.stop()
-    };
-})
+    console.log('mouseDown');
+}
 
