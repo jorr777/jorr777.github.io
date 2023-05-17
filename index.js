@@ -14,8 +14,8 @@ const start = document.getElementById('start')
 const result = document.querySelector('.result')
 
 
-start.addEventListener('mousedown', handleMdown)
-start.addEventListener('mouseup', handleMdown)
+start.addEventListener('mousedown', handleClick)
+start.addEventListener('mouseup', handleClick)
 let tmp = false
 
 
@@ -27,7 +27,7 @@ recognition.onresult = (event) => {
     console.log('mouseUp');
 };
 
-function handleMdown(e) {
+function handleClick(e) {
     if (tmp) {
         start.innerHTML = 'Start'
         recognition.stop()
