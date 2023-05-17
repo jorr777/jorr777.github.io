@@ -15,22 +15,27 @@ const result = document.querySelector('.result')
 
 
 start.addEventListener('mousedown', handleMdown)
-start.addEventListener('mouseup', handleMUp)
+start.addEventListener('mouseup', handleMdown)
+let tmp = false
 
 
-function handleMUp() {
-    start.innerHTML = 'Start'
-    recognition.onresult = (event) => {
+recognition.onresult = (event) => {
+    console.log('event');
+    if (event.results[0].isFinal) {
         console.log(event.results[0][0].transcript);
-        recognition.stop()
-    };
-
-}
+    }
+    console.log('mouseUp');
+};
 
 function handleMdown(e) {
-    start.innerHTML = 'voise message...'
-    recognition.start()
-
-    console.log('mouseDown');
+    if (tmp) {
+        start.innerHTML = 'Start'
+        recognition.stop()
+    } else {
+        start.innerHTML = 'voise message...'
+        recognition.start()
+        console.log('mouseDown');
+    }
+    tmp = !tmp
 }
 
