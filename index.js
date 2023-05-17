@@ -16,6 +16,7 @@ let isButtonPressed = false;
 let timeout
 
 start.addEventListener('mousedown', (event) => {
+    start.innerHTML = 'voise message...'
     console.log(recognition.start())
     console.log("Ready to receive a color command.");
     isButtonPressed = true
@@ -23,6 +24,7 @@ start.addEventListener('mousedown', (event) => {
 })
 
 start.addEventListener('mouseup', () => {
+    start.innerHTML = 'start'
     isButtonPressed = false
     clearTimeout(timeout)
 
