@@ -22,18 +22,14 @@ function handleMUp() {
     start.innerHTML = 'Start'
     recognition.onresult = (event) => {
         console.log(event.results[0][0].transcript);
+        recognition.stop()
     };
-    recognition.stop()
-    console.log('mouseup');
 
-    console.log('mouseup');
 }
 
 function handleMdown(e) {
     start.innerHTML = 'voise message...'
-    console.log(recognition.start())
-    console.log("Ready to receive a color command.");
-
+    recognition.start()
 
     console.log('mouseDown');
 }
